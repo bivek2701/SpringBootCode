@@ -20,20 +20,6 @@ import com.api.book.service.BookService;
 @RestController
 public class BookController {
 
-
-	
-	/*
-	public Book getBook()
-	{
-		Book book=new Book();
-		book.setBookId(12345);
-		book.setTitle("Java Reference book");
-		book.setAuthor("John MC");
-		
-		return book;
-	}
-	*/
-	
 	@Autowired
 	private BookService bookService;
 	
@@ -45,7 +31,7 @@ public class BookController {
 		{
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}
-		return ResponseEntity.of(Optional.of(list));
+		return ResponseEntity.status(HttpStatus.CREATED).body(list);
 	}
 	
 	@GetMapping("books/{id}")

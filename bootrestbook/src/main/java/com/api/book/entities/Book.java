@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GeneratorType;
@@ -18,8 +19,13 @@ public class Book {
 	@Column(name="book_id")
 	private int id;
 	private String title;
-	private String author;
-	public Book(int id, String title, String author) {
+	//private String author;
+	
+	@OneToOne
+	private Author author;
+	
+	//Getter/setter and constructor
+	public Book(int id, String title, Author author) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -41,10 +47,10 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthor() {
+	public Author getAuthor() {
 		return author;
 	}
-	public void setAuthor(String author) {
+	public void setAuthor(Author author) {
 		this.author = author;
 	}
 	@Override
